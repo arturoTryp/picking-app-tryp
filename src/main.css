@@ -1,0 +1,246 @@
+@font-face {
+  font-family: 'Bw-Gradual-Regular';
+  src: url('./fonts/BwGradual-Regular.otf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Bw-Gradual-Bold';
+  src: url('./fonts/BwGradual-Bold.otf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Bw-Gradual-Medium';
+  src: url('./fonts/BwGradual-Medium.otf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+:root{
+  --verdeTryp:#32bc5d;
+--verdeTryp20Percent:#badfcc;
+--cannabis:#057733;
+--cannabis20Percent:#bcd1c5;
+--verdeObscuro:#293A30;
+--verdeObscuro20Percent:#c3c6c3;
+--amarillo:#ffc33d;
+--amarillo20Percent:#ece1c6;
+--naranja:#f38f2a;
+--naranja20Percent:#ead6c2;
+--magenta:#de1d61;
+--crema:#e4dfc6;
+--crema20Percent:#e7e6e1;
+--cremaLight:#e6e4dd;
+--softGrey: #F1F1F1;
+  --BwGradualRegual:Bw-Gradual-Regular, Avenir;
+  --BwGradualMedium:Bw-Gradual-Medium, Avenir;
+  --BwGradualBold: Bw-Gradual-Bold, Avenir;
+
+}
+
+  b {
+    font-family: var(--BwGradualRegual);
+  }
+  .inactive{
+    display: none;
+  }
+
+  .sticky-container {
+    position: sticky;
+    top:0;
+    background-color: white;
+  }
+  .top-buttons-row {
+    border-bottom: 1px solid #f1f1f1;
+  }
+  .top-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 20px;
+    width: 100%;
+    font-family: var(--BwGradualMedium);
+  }
+  .top-buttons button {
+    padding: 8px 14px;
+    color: var(--verdeTryp);
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid var(--verdeTryp);
+  }
+
+  .top-buttons button:hover {
+    color: white;
+    background-color: var(--verdeTryp);
+    border-radius: 8px;
+    border: 1px solid var(--verdeTryp);
+  }
+
+  .btn-active {
+    color: white !important;
+    background-color: var(--verdeTryp) !important;
+    border: 1px solid var(--verdeTryp);
+  }
+  .order-title {
+    padding: 15px 20px;
+    background-color: rgba(0, 117, 51, 0.1);
+    
+  }
+  .order-buttons-title {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+
+  #orderName {
+    font-size: 20px;
+    color: black;
+  }
+
+  .order-details-container {
+    width: 100%;
+    border-bottom: 1px solid #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+  }
+  .client-data {
+    padding: 10px 0;
+  }
+
+  .left-order-info {
+    font-size: 11px;
+    font-family: var(--BwGradualBold);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+  }
+
+  .address-data {
+    padding: 10px 0;
+    align-items: center;
+  }
+
+  .right-order-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    font-size: 11px;
+    font-family: var(--BwGradualRegual);
+    text-align: end;
+  }
+
+  .line-item-card-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f1f1f1;
+    padding: 10px 14px;
+    border-radius: 15px;
+    margin: 10px 0;
+  }
+  #variantImg {
+    width: 85px;
+    height: 85px;
+    margin-right: 10px;
+    border-radius: 10px;
+  }
+
+  .variant-data-container {
+
+    padding: 2px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 10px;
+  }
+
+  .variant-data-container div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .variant-location-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    font-size: 8px;
+    padding: 2px 0;
+  }
+
+  .variants-cards-container{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+  }
+
+  .fixed-bottom-container{
+    position: fixed;
+    bottom: 0;
+    left:0;
+    right: 0;
+    display: flex;
+    justify-content: end;
+    padding: 10px 20px;
+    background-color: white;
+    border-top: 1px solid var(--softGrey);
+    width: 100%;
+    font-size: 20px;
+    color: var(--cannabis);
+    font-family: var(--BwGradualBold);
+    align-items: center;
+  }
+
+  .fixed-bottom-container input {
+  
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: var(--cannabis);
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 100px
+
+  }
+
+  .fixed-bottom-container span {
+    margin-right: 10px;
+  }
+  
+
+
+
+
+  #orderName{
+    font-family: var(--BwGradualBold);
+  }
+
+  #barcode{
+    color: black;
+    font-size: 10px;
+  }
+
+  #productName{
+    font-size: 8px;
+  }
+
+  #variantName{
+    font-size: 10px;
+    font-family: var(--BwGradualMedium);
+    color: var(--verdeTryp);
+  }
+
+  #quantity{
+    color: var(--magenta);
+    font-family: var(--BwGradualBold);
+  }
+
+
+
+
+  
