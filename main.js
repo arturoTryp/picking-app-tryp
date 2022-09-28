@@ -1,5 +1,6 @@
 let orderIndex = 0;
 let local = true;
+const token = "Bearer keyqVvsqb9MB4p1Wn";
 const btnLocal = document.getElementById("btnLocal");
 const btnForaneo = document.getElementById("btnForaneo");
 const orderName = document.getElementById("orderName");
@@ -17,7 +18,7 @@ const nextArrow = document.getElementById("rightArrow");
 const pickedCheckbox = document.getElementById("pickedCheckbox");
 const params = {
   method: "GET",
-  headers: { Authorization: "Bearer keyqVvsqb9MB4p1Wn" },
+  headers: { Authorization: token },
 };
 
 main();
@@ -31,7 +32,7 @@ async function callAPI(urlAPI, params = null) {
 
 async function getOrdersData() {
   const response = await callAPI(
-    "https://api.airtable.com/v0/appsrYW53pV5fd9IT/tblbHeOGtdNVQQ9FU?fields%5B%5D=Is+First+Order&fields%5B%5D=Name&fields%5B%5D=Name+(Shipping)&fields%5B%5D=Last+Name+(Shipping)&fields%5B%5D=Shipping+Address+1&fields%5B%5D=Shipping+Address+2&fields%5B%5D=Shipping+Province&fields%5B%5D=Tags&fields%5B%5D=Picked+Up&filterByFormula=AND(%7BFinancial+Status%7D%3D%22paid%22%2C+%7BFulfillment+Status%7D%3DBLANK()%2C+SEARCH('prueba'%2CARRAYJOIN(Tags%2C%22%2C%22))+%3D+0)",
+    "https://api.airtable.com/v0/appsrYW53pV5fd9IT/tblbHeOGtdNVQQ9FU?fields%5B%5D=Is+First+Order&fields%5B%5D=Name&fields%5B%5D=Name+(Shipping)&fields%5B%5D=Last+Name+(Shipping)&fields%5B%5D=Shipping+Address+1&fields%5B%5D=Shipping+Address+2&fields%5B%5D=Shipping+Province&fields%5B%5D=Tags&fields%5B%5D=Picked+Up&filterByFormula=AND(%7BFinancial+Status%7D%3D%22paid%22%2C+%7BFulfillment+Status%7D%3DBLANK()%2C+SEARCH('prueba'%2CARRAYJOIN(Tags%2C%22%2C%22))+%3D+0)&sort%5B0%5D%5Bfield%5D=Created+At&sort%5B0%5D%5Bdirection%5D=asc",
     params
   );
 
@@ -43,7 +44,7 @@ async function getOrdersData() {
 }
 
 async function getLineItems(orderName) {
-  const url = `https://api.airtable.com/v0/appsrYW53pV5fd9IT/tbl4dkYqn9YG4MHar?fields%5B%5D=Barcode&fields%5B%5D=Order+Identifier&fields%5B%5D=Product+Name&fields%5B%5D=Quantity&fields%5B%5D=SKU&fields%5B%5D=Variant+Name&fields%5B%5D=Vendor+name&fields%5B%5D=Variant+Img&fields%5B%5D=Product+Imgs&filterByFormula=%7BOrder+Identifier%7D%3D%22${orderName}%22`;
+  const url = `https://api.airtable.com/v0/appsrYW53pV5fd9IT/tbl4dkYqn9YG4MHar?fields%5B%5D=Barcode&fields%5B%5D=Order+Identifier&fields%5B%5D=Product+Name&fields%5B%5D=Quantity&fields%5B%5D=SKU&fields%5B%5D=Variant+Name&fields%5B%5D=Vendor+name&fields%5B%5D=Variant+Img&fields%5B%5D=Product+Imgs&filterByFormula=AND(%7BOrder+Identifier%7D%3D%22${orderName}%22%2C%7BAssigned+Fulfillment+Location%7D%3D%22Zamora+187%22)`;
   const lineItemResponse = await callAPI(url, params);
   return lineItemResponse.records;
 }
@@ -114,6 +115,8 @@ async function render(index, ordersArray, local) {
     ? pickedCheckbox.setAttribute("checked", true)
     : pickedCheckbox.removeAttribute("checked", true);
 
+  console.log(order["Picked Up"]);
+
   //Crear HTML de Variantes Cards por cara variante
 
   let HTMLconcat = "";
@@ -169,4 +172,12 @@ btnLocal.addEventListener("click", (e) => {
   local = true;
   orderIndex = 0;
   main();
+});
+
+pickedCheckbox.addEventListener("change", (e) => {
+  if (e.target.checked) {
+    console.log("checked");
+  } else {
+    console.log("un-checked");
+  }
 });
