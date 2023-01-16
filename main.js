@@ -1,3 +1,5 @@
+//deprecated file
+
 let orderIndex = 0;
 let local = true;
 const token = "Bearer keyqVvsqb9MB4p1Wn";
@@ -68,7 +70,6 @@ async function main() {
 
 async function render(index, ordersArray, local) {
   const ordersAmount = ordersArray.length;
-  console.log(ordersArray);
   const order = ordersArray[index].fields;
   const lineItems = await getLineItems(order.Name);
   let cantidadArticulos = 0;
@@ -114,8 +115,6 @@ async function render(index, ordersArray, local) {
   order["Picked Up"]
     ? pickedCheckbox.setAttribute("checked", true)
     : pickedCheckbox.removeAttribute("checked", true);
-
-  console.log(order["Picked Up"]);
 
   //Crear HTML de Variantes Cards por cara variante
 
@@ -174,10 +173,4 @@ btnLocal.addEventListener("click", (e) => {
   main();
 });
 
-pickedCheckbox.addEventListener("change", (e) => {
-  if (e.target.checked) {
-    console.log("checked");
-  } else {
-    console.log("un-checked");
-  }
-});
+pickedCheckbox.addEventListener("change", (e) => {});
