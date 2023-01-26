@@ -46,7 +46,7 @@ async function getOrdersData() {
 }
 
 async function getLineItems(orderName) {
-  const url = `https://api.airtable.com/v0/appsrYW53pV5fd9IT/tbl4dkYqn9YG4MHar?fields%5B%5D=Barcode&fields%5B%5D=Order+Identifier&fields%5B%5D=Product+Name&fields%5B%5D=Quantity&fields%5B%5D=SKU&fields%5B%5D=Variant+Name&fields%5B%5D=Vendor+name&fields%5B%5D=Variant+Img&fields%5B%5D=Product+Imgs&filterByFormula=AND(%7BOrder+Identifier%7D%3D%22${orderName}%22%2C%7BAssigned+Fulfillment+Location%7D%3D%22Zamora+187%22)`;
+  const url = `https://api.airtable.com/v0/appsrYW53pV5fd9IT/tbl4dkYqn9YG4MHar?fields%5B%5D=Barcode&fields%5B%5D=Order+Identifier&fields%5B%5D=Product+Name&fields%5B%5D=Quantity&fields%5B%5D=SKU&fields%5B%5D=Variant+Name&fields%5B%5D=Vendor+name&fields%5B%5D=Variant+Img&fields%5B%5D=Product+Imgs&filterByFormula=AND(%7BOrder+Identifier%7D%3D%22${orderName}%22%2C%7BAssigned%20Fulfillment%20Location%7D%3D%22Zamora%20187%22%2C%20%7BName%7D!%3D%22Tip%22)`;
   const lineItemResponse = await callAPI(url, params);
   return lineItemResponse.records;
 }
@@ -54,6 +54,8 @@ async function getLineItems(orderName) {
 async function main() {
   const orderData = await getOrdersData();
   let ordersArray;
+
+  console.log("jsjshj");
 
   if (local) {
     ordersArray = orderData.filter((order) =>
@@ -120,12 +122,12 @@ async function render(index, ordersArray, local) {
 
   let HTMLconcat = "";
   lineItems.map((lineItem) => {
-    const variantIMGURL = lineItem.fields["Variant Img"]
-      ? lineItem.fields["Variant Img"][0].url
-      : lineItem.fields["Product Imgs"][0].url;
+    const variantIMGURL = lineItem?.fields["Variant Img"]
+      ? lineItem?.fields["Variant Img"][0].url
+      : lineItem?.fields["Product Imgs"][0].url;
 
     const barcode = lineItem.fields["Barcode"]
-      ? lineItem.fields["Barcode"][0].text
+      ? lineItem?.fields["Barcode"][0].text
       : "";
 
     const lineItemHTML = `<div class="line-item-card-container">
