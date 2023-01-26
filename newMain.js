@@ -44,7 +44,7 @@ async function getOrderLineItems() {
   console.log("Ordenes", ordersArray);
 
   for (let order of ordersArray) {
-    const formula = `AND({Shopify Order ID} =${order.fields["∞ Shopify Id"]})`;
+    const formula = `AND({Shopify Order ID} =${order.fields["∞ Shopify Id"]}, {Name} != "Tip")`;
     let url =
       "https://api.airtable.com/v0/appsrYW53pV5fd9IT/tbl4dkYqn9YG4MHar/listRecords";
     const body = {
